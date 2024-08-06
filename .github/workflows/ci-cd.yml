@@ -15,5 +15,5 @@ jobs:
 
     - name: Deploy
       run: |
-        cd /home/ubuntu/TODOLIST
+        cd /var/www/html/TODOLIST
         git pull
