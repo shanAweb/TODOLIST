@@ -13,19 +13,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16' # Use the appropriate version if needed
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run lint
-      run: npm run lint # Replace this with the lint command if you have a linting setup
+    - name: Lint HTML, CSS, and JavaScript
+      run: |
+        # Example linting commands
+        npx htmlhint "**/*.html" # Adjust or remove if you don't use HTMLHint
+        npx stylelint "**/*.css" # Adjust or remove if you don't use Stylelint
+        npx eslint "**/*.js"     # Adjust or remove if you don't use ESLint
 
     - name: Build project
-      run: npm run build # Replace this with the build command if you have a build setup
+      run: echo "No build step needed"
 
     - name: Deploy
       run: echo "Deploy step - add deployment commands if needed"
