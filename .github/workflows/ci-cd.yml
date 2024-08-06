@@ -13,8 +13,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Build project
-      run: echo "No build step needed"
-
     - name: Deploy
-      run: echo "Deploy step - add deployment commands if needed"
+      run: |
+        cd /home/ubuntu/TODOLIST
+        git pull
