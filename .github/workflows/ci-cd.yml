@@ -13,13 +13,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Lint HTML, CSS, and JavaScript
-      run: |
-        # Example linting commands
-        npx htmlhint "**/*.html" # Adjust or remove if you don't use HTMLHint
-        npx stylelint "**/*.css" # Adjust or remove if you don't use Stylelint
-        npx eslint "**/*.js"     # Adjust or remove if you don't use ESLint
-
     - name: Build project
       run: echo "No build step needed"
 
