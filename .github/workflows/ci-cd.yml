@@ -1,19 +1,26 @@
-name: CI/CD Pipeline
+name: Deploy Static Website to EC2
 
 on:
   push:
     branches:
-      - main
+      - main  # Adjust the branch as per your workflow
 
 jobs:
-  build:
-    runs-on: self-hosted
+  deploy:
+    runs-on: self-hosted  # Specify that the job runs on your self-hosted runner
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
-    - name: Deploy
+    - name: Build and Deploy Docker Image
       run: |
-        cd /var/www/html/TODOLIST
-        git pull
+        # Build the Docker image
+        docker build -t static-website:latest .
+
+        # Stop and remove the existing container if it's running
+        docker stop static-website || true
+        docker rm static-website || true
+
+        # Run the new container
+        docker run -d -p 80:80 --name static-website static-website:latest
