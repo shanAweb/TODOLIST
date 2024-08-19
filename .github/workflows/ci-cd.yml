@@ -16,11 +16,11 @@ jobs:
     - name: Build and Deploy Docker Image
       run: |
         # Build the Docker image
-        docker build -t static-website:latest .
+        docker build -t todolist .
 
         # Stop and remove the existing container if it's running
-        docker stop static-website || true
-        docker rm static-website || true
+        docker stop todolist
+        docker rm -f todolist
 
         # Run the new container
         docker run -d -p 80:80 --name static-website static-website:latest
